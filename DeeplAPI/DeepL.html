@@ -143,7 +143,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">api_key:</span>)
   <span class="ruby-ivar">@api_base_url</span> = <span class="ruby-string">&quot;https://api.deepl.com/v2&quot;</span>
   <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>.<span class="ruby-identifier">to_s</span>
@@ -192,7 +192,7 @@
 
           
           <div class="method-source-code" id="source_languages-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">source_languages</span>
   <span class="ruby-identifier">languages</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;source&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -229,7 +229,7 @@
 
           
           <div class="method-source-code" id="target_languages-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">target_languages</span>
   <span class="ruby-identifier">languages</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;target&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -275,7 +275,7 @@
 
           
           <div class="method-source-code" id="translate-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">translate</span>(
   <span class="ruby-value">source_language:</span> <span class="ruby-keyword">nil</span>,
   <span class="ruby-value">target_language:</span>,
@@ -335,7 +335,7 @@
 
           
           <div class="method-source-code" id="usage_information-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">usage_information</span>
   <span class="ruby-identifier">data</span> = <span class="ruby-identifier">api_call</span>(<span class="ruby-value">url:</span> <span class="ruby-string">&quot;/usage&quot;</span>)
   <span class="ruby-constant">UsageInformation</span>.<span class="ruby-identifier">new</span>(

@@ -88,7 +88,11 @@
 
 <h2 id="module-DeeplAPI-label-Example">Example<span><a href="#module-DeeplAPI-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<pre class="ruby"><span class="ruby-operator">...</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;deepl_api&quot;</span>
+
+<span class="ruby-identifier">deepl</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">DeepL</span>.<span class="ruby-identifier">new</span>( <span class="ruby-value">api_key:</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;DEEPL_API_KEY&quot;</span>] )
+<span class="ruby-identifier">usage</span> = <span class="ruby-identifier">deepl</span>.<span class="ruby-identifier">usage_information</span>()
+<span class="ruby-operator">=&gt;</span>
 </pre>
 
 <h2 id="module-DeeplAPI-label-See+Also">See Also<span><a href="#module-DeeplAPI-label-See+Also">&para;</a> <a href="#top">&uarr;</a></span></h2>
