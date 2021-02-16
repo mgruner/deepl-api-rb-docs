@@ -177,13 +177,13 @@
           <div class="method-source-code" id="languages-source">
             <pre><span class="ruby-comment"># File lib/deepl_api/cli.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">languages</span>
-  <span class="ruby-identifier">deepl</span> = <span class="ruby-identifier">get_instance</span>()
-  <span class="ruby-identifier">source_langs</span> = <span class="ruby-identifier">deepl</span>.<span class="ruby-identifier">source_languages</span>()
-  <span class="ruby-identifier">target_langs</span> = <span class="ruby-identifier">deepl</span>.<span class="ruby-identifier">target_languages</span>()
+  <span class="ruby-identifier">deepl</span> = <span class="ruby-identifier">instance</span>
+  <span class="ruby-identifier">source_langs</span> = <span class="ruby-identifier">deepl</span>.<span class="ruby-identifier">source_languages</span>
+  <span class="ruby-identifier">target_langs</span> = <span class="ruby-identifier">deepl</span>.<span class="ruby-identifier">target_languages</span>
 
   <span class="ruby-identifier">puts</span>(<span class="ruby-string">&quot;DeepL can translate from the following source languages:&quot;</span>)
   <span class="ruby-identifier">source_langs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">language</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;  #{language.ljust(5)} (#{name})&quot;</span>) }
-  <span class="ruby-identifier">puts</span>()
+  <span class="ruby-identifier">puts</span>
   <span class="ruby-identifier">puts</span>(<span class="ruby-string">&quot;DeepL can translate to the following target languages:&quot;</span>)
   <span class="ruby-identifier">target_langs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">language</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;  #{language.ljust(5)} (#{name})&quot;</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -216,30 +216,30 @@
 
           
           <div class="method-source-code" id="translate-source">
-            <pre><span class="ruby-comment"># File lib/deepl_api/cli.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/deepl_api/cli.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">translate</span>
   <span class="ruby-identifier">formality</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">Formality</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT</span>
-  <span class="ruby-identifier">formality</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">Formality</span><span class="ruby-operator">::</span><span class="ruby-constant">LESS</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;formality-less&#39;</span>]
-  <span class="ruby-identifier">formality</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">Formality</span><span class="ruby-operator">::</span><span class="ruby-constant">MORE</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;formality-more&#39;</span>]
+  <span class="ruby-identifier">formality</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">Formality</span><span class="ruby-operator">::</span><span class="ruby-constant">LESS</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;formality-less&quot;</span>]
+  <span class="ruby-identifier">formality</span> = <span class="ruby-constant">DeeplAPI</span><span class="ruby-operator">::</span><span class="ruby-constant">Formality</span><span class="ruby-operator">::</span><span class="ruby-constant">MORE</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;formality-more&quot;</span>]
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;input-file&#39;</span>]
-    <span class="ruby-identifier">text</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;input-file&#39;</span>])
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">text</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">read</span>()
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">text</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;input-file&quot;</span>]
+           <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;input-file&quot;</span>])
+         <span class="ruby-keyword">else</span>
+           <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">read</span>
+         <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">get_instance</span>().<span class="ruby-identifier">translate</span>(
-    <span class="ruby-value">source_language:</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;source-language&#39;</span>],
-    <span class="ruby-value">target_language:</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;target-language&#39;</span>],
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">translate</span>(
+    <span class="ruby-value">source_language:</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;source-language&quot;</span>],
+    <span class="ruby-value">target_language:</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;target-language&quot;</span>],
     <span class="ruby-value">preserve_formatting:</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;preserve-formatting&quot;</span>],
     <span class="ruby-value">formality:</span> <span class="ruby-identifier">formality</span>,
-    <span class="ruby-value">texts:</span> [<span class="ruby-identifier">text</span>],
+    <span class="ruby-value">texts:</span> [<span class="ruby-identifier">text</span>]
   )
 
-  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">result</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> <span class="ruby-identifier">entry</span>[<span class="ruby-string">&#39;text&#39;</span>] }.<span class="ruby-identifier">join</span>()
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">result</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> <span class="ruby-identifier">entry</span>[<span class="ruby-string">&quot;text&quot;</span>] }.<span class="ruby-identifier">join</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;output-file&#39;</span>]
-    <span class="ruby-constant">File</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;output-file&#39;</span>], <span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;output-file&quot;</span>]
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;output-file&quot;</span>], <span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">text</span>
   <span class="ruby-keyword">end</span>
@@ -275,7 +275,7 @@
           <div class="method-source-code" id="usage_information-source">
             <pre><span class="ruby-comment"># File lib/deepl_api/cli.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">usage_information</span>
-  <span class="ruby-identifier">usage</span> = <span class="ruby-identifier">get_instance</span>().<span class="ruby-identifier">usage_information</span>()
+  <span class="ruby-identifier">usage</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">usage_information</span>
   <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;Available characters per billing period: #{usage.character_limit}&quot;</span>)
   <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;Characters already translated in the current billing period: #{usage.character_count}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
